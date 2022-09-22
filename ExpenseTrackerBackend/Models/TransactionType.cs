@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExpenseTrackerBackend.Models
 {
+    [Index(nameof(Type), IsUnique = true)]
     public class TransactionType
     {
         [Key]

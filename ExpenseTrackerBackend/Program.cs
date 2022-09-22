@@ -1,8 +1,8 @@
 using ExpenseTrackerBackend.Models;
 using Microsoft.EntityFrameworkCore;
 
-var allowSpecificOrigins = "_allowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+var allowSpecificOrigins = "_allowSpecificOrigins";
 
 // Add services to the container.
 
@@ -15,14 +15,12 @@ builder.Services.AddDbContext<TransactionDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: allowSpecificOrigins, builder =>
-    {
-        builder.WithOrigins("https://localhost:4200")
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-    });
+
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: allowSpecificOrigins, 
+        builder => {
+            builder.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+        });
 });
 
 var app = builder.Build();
