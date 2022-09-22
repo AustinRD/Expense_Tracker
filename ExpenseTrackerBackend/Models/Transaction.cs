@@ -13,7 +13,8 @@ namespace ExpenseTrackerBackend.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "No User Provided")]
-        public User User { get; set; }
+        public int UserId { get; set; }
+        public User? User { get; set; }
 
         // Required - Decimal - Payment Amount
         [Required(ErrorMessage = "Transaction Amount Required.")]
@@ -25,11 +26,13 @@ namespace ExpenseTrackerBackend.Models
 
         // Required - Foreign Key - Cash Credit Debit Check Crypto
         [Required(ErrorMessage = "Transaction Type (Cash/Credit/Crypto/etc.) Required.")]
-        public TransactionType TransactionType { get; set; }
+        public int TransactionTypeId { get; set; }
+        public TransactionType? TransactionType { get; set; }
 
         // Food Entertainment Transportation Utility Housing
         [Required(ErrorMessage = "Transaction Category Required. If no category exists it can be changed later. Select 'Miscellaneous' for now.")]
-        public TransactionCategory TransactionCategory { get; set; }
+        public int TransactionCategoryId {get; set; }
+        public TransactionCategory? TransactionCategory { get; set; }
 
         // Optional - Description - What was purchased?
         [StringLength(200)]
