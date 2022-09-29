@@ -1,0 +1,37 @@
+
+<div class="container">
+    <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#add-edit-modal" (click)="addModal();">
+        Add Transaction
+    </button>
+    
+    <table class="table table-striped">
+        <thead>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Recipient</th>
+            <th>Date</th>
+            <th>Option</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactionList$|async">
+                <td>{{transactionTypesMap.get(transaction.transactionTypeId)}}</td>
+                <td>{{transactionCategoriesMap.get(transaction.transactionCategoryId)!.join(" - ")}}</td>
+                <td>{{transaction.transactionAmount | currency}}</td>
+                <td>{{transaction.recipient}}</td>
+                <td>{{transaction.transactionDate | date}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#add-edit-modal" (click)="editModal(transaction);">
+                        Details
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteModal(transaction);">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<app-add-edit-transaction [transaction]="transaction" [modalTitle]="modalTitle"></app-add-edit-transaction>
+

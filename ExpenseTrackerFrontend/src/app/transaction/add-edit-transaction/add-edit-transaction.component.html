@@ -1,0 +1,43 @@
+
+<!-- Modal -->
+<div class="modal fade" id="add-edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                <button type="button" class="btn-close" id="add-edit-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="transactionId" [value]="transaction.id" *ngIf="transaction.id != 0">
+
+                    <label for="transactionAmount" class="form-label">Amount</label>
+                    <input type="text" id="transactionAmount" name="transactionAmount" class="form-control" [(ngModel)]="transaction.transactionAmount" (blur)="convertToUSD($event)">
+
+                    <label for="transactionType" class="form-label">Payment Method</label>
+                    <select name="transactionType" id="transactionType" class="form-control" [(ngModel)]="transaction.transactionTypeId">
+                        <option *ngFor="let type of transactionTypesList$|async" [value]="type.id">{{type.type}}</option>
+                    </select>
+
+                    <label for="transactionCategory" class="form-label">Category</label>
+                    <select name="transactionCategory" id="transactionCategory" class="form-control" [(ngModel)]="transaction.transactionCategoryId">
+                        <option *ngFor="let category of transactionCategoriesList$|async" [value]="category.id">{{category.category + " - " + (category.subcategory != null ? category.subcategory : "General")}}</option>
+                    </select>
+
+                    <label for="transactionDate" class="form-label">Date</label>
+                    <input type="date" id="transactionDate" name="transactionDate" class="form-control" [(ngModel)]="transaction.transactionDate">
+
+                    <label for="transactionRecipient" class="form-label">Recipient</label>
+                    <input type="text" id="transactionRecipient" name="transactionRecipient" class="form-control" [(ngModel)]="transaction.recipient">
+
+                    <label for="transactionDescription" class="form-label">Description</label>
+                    <input type="text" id="transactionDescription" name="transactionDescription" class="form-control" [(ngModel)]="transaction.transactionDescription">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addTransaction();" *ngIf="transaction.id == 0">Add</button>
+                <button type="button" class="btn btn-primary" (click)="updateTransaction();" *ngIf="transaction.id != 0">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

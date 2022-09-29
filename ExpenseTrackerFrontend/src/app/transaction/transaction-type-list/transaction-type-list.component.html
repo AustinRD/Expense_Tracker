@@ -1,0 +1,11 @@
+<p>Transaction Types</p>
+<table>
+    <thead>
+        <th>Type</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let type of transactionTypesList$|async">
+            <td>{{type.type}}</td>
+        </tr>
+    </tbody>
+</table>

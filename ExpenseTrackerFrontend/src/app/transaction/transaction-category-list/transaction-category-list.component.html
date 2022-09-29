@@ -1,0 +1,13 @@
+<p>Transaction Categories</p>
+<table>
+    <thead>
+        <th>Category</th>
+        <th>Subcategory</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of transactionCategoriesList$|async">
+            <td>{{category.category}}</td>
+            <td>{{category.subcategory ? category.subcategory : "General"}}</td>
+        </tr>
+    </tbody>
+</table>
