@@ -60,7 +60,7 @@ export class TransactionTableComponent implements OnInit {
       let subcategory = "";
 
       for(let i = 0; i < data.length; i++) {
-        subcategory = this.transactionCategoriesList[i].subcategory != null ? this.transactionCategoriesList[i].subcategory!.toString() : "General";
+        subcategory = this.transactionCategoriesList[i].subcategory != null && this.transactionCategoriesList[i].subcategory != "" ? this.transactionCategoriesList[i].subcategory!.toString() : "General";
         this.transactionCategoriesMap.set(this.transactionCategoriesList[i].id, [this.transactionCategoriesList[i].category, subcategory]);
       }
     });

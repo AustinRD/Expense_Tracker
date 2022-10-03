@@ -33,7 +33,8 @@ export class AddEditTransactionComponent implements OnInit {
       if(closeModalBtn) {
         closeModalBtn.click();
       }
-    })
+    });
+    window.location.reload();
   }
   updateTransaction() {
     this.service.updateTransaction(this.transaction.id, this.transaction).subscribe(res => {

@@ -2,10 +2,10 @@
 <!-- Modal -->
 <div class="modal fade" id="add-edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content bg-dark text-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
-                <button type="button" class="btn-close" id="add-edit-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" id="add-edit-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
@@ -21,7 +21,7 @@
 
                     <label for="transactionCategory" class="form-label">Category</label>
                     <select name="transactionCategory" id="transactionCategory" class="form-control" [(ngModel)]="transaction.transactionCategoryId">
-                        <option *ngFor="let category of transactionCategoriesList$|async" [value]="category.id">{{category.category + " - " + (category.subcategory != null ? category.subcategory : "General")}}</option>
+                        <option *ngFor="let category of transactionCategoriesList$|async" [value]="category.id">{{category.category + " - " + (category.subcategory != null && category.subcategory != "" ? category.subcategory : "General")}}</option>
                     </select>
 
                     <label for="transactionDate" class="form-label">Date</label>
