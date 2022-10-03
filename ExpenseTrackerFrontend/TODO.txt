@@ -1,0 +1,11 @@
+BUG:
+    1. Deleting Categories in the database removes all associated transactions
+
+NEW FEATURE:
+    1. Add support for associating transaction types with Icons (fontawesome) 
+        --> Cash (fa-money-bill)
+        --> Credit (fa-credit-card)
+            --> (visa - fa-cc-visa)
+            --> (mastercard)
+            --> etc.
+    2. Add support for auth tokens, and user sign-ins
