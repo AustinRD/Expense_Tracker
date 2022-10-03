@@ -1,1 +1,57 @@
-<router-outlet></router-outlet>
+
+<div class="container-fluid">
+    <!-- Push Sidebar -->
+    <div class="row flex-nowrap">
+        <div class="col-auto px-0">
+            <div id="sidebar" class="bg-dark text-white collapse collapse-horizontal">
+                <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                    <div class="d-flex justify-content-center align-items-center pt-3">
+                        Menu
+                    </div>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li>
+                          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link text-white">
+                            Dashboard
+                          </a>
+                        </li>
+                        <li>
+                          <a routerLink="/transactionTable" routerLinkActive="active" class="nav-link text-white">
+                            Transactions
+                          </a>
+                        </li>
+                        <li>
+                          <a routerLink="/transactionCategories" routerLinkActive="active" class="nav-link text-white">
+                            Categories
+                          </a>
+                        </li>
+                        <li>
+                          <a routerLink="/transactionTypes" routerLinkActive="active" class="nav-link text-white">
+                            Types
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main class="col">
+            <!-- Pushed Header -->
+            <div class="row bg-dark pt-2 pb-2">
+                <div class="col-12">
+                    <a href="#" title="Menu" data-bs-target="#sidebar" data-bs-toggle="collapse" class="rounded-3 p-1 ms-3 me-3 text-white text-decoration-none">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <a routerLink="/" class="text-white text-decoration-none">
+                        <span class="fs-4">Expense Tracker</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Pushed Content -->
+            <div class="row">
+                <div class="col-12">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

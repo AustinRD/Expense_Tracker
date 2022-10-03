@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+app-transaction-table, 
+app-transaction-category-list,
+app-transaction-type-list {
+    margin: 50px auto;
+}
+body {
+    background: #2c3034;
+}
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+/*
+    Changed active and button primary classes to fit better
+    with dark theme
+*/
+.active, .btn-primary {
+    background-color: #d3d8dc!important;
+    color: black!important;
+}
+/* 
+    Configured sidebar collapse to horizontal collapse 
+    instead of verical 
+*/
+.collapsing {
+    width: 0;
+    transition: .35s ease;
+}
+/* 
+    Removed a side-effect of the flex-no-wrap class in bootstrap 
+    giving content a negative x location 
+*/
+.row {
+    --bs-gutter-x: 0;
+}
+
+/* Changed the default (blue) chevron in accordion buttons to white */
+.accordion-button::after, 
+.accordion-button:not(.collapsed)::after {
+    background-image: url(assets/chevron-down.svg);
+    margin-left: 0;
+}
+
+/* Changed list group items so that there could be an icon on the right end */
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
