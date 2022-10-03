@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/models/transaction-category.model';
+import { TransactionDataService } from 'src/app/transaction-data.service';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-edit-category.component.css']
 })
 export class AddEditCategoryComponent implements OnInit {
+  categoryList$!: Observable<Category[]>;
+  
+  constructor(public service: TransactionDataService) { }
 
-  constructor() { }
+  @Input() category!: Category;
+  @Input() modalTitle: string = "";
 
   ngOnInit(): void {
+    this.categoryList$ = this.service.getTransactionCategoriesList();
   }
+  addCategory() {
+    this.service.addTransactionCategories(this.category).subscribe(res => {
 
+    });
+    window.location.reload();
+  }
 }

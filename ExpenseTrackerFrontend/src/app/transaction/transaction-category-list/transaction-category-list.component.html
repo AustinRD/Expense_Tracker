@@ -1,13 +1,42 @@
-<p>Transaction Categories</p>
-<table>
-    <thead>
-        <th>Category</th>
-        <th>Subcategory</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let category of transactionCategoriesList$|async">
-            <td>{{category.category}}</td>
-            <td>{{category.subcategory ? category.subcategory : "General"}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container-fluid">
+    
+
+    <div class="row p-4">
+        <div class="col-12">
+            <div class="accordion" id="category-accordion">
+                <div class="accordion-item" *ngFor="let category of transactionCategoriesMap | keyvalue; let i = index;">
+                    <h2 class="accordion-header" id="heading{{i}}">
+                        <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                            {{category.key}}
+                            <button type="button" title="Delete" class="btn btn-outline-danger border-0 text-white ms-auto" (click)="deleteModal(categoryMap.get(category.key)!)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </button>
+                    </h2>
+                    <div id="collapse{{i}}" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#category-accordion">
+                        <ul class="accordion-body list-group p-0">
+                            <li class="list-group-item bg-dark text-white rounded-0 border-white ps-5" *ngFor="let subcategory of category.value">
+                                {{subcategory}}
+                                <button type="button" title="Delete" class="btn btn-outline-danger border-0 text-white" (click)="deleteModal(categoryMap.get(category.key + subcategory)!)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </li>
+                            <li class="list-group-item bg-dark text-white rounded-0 border-white ps-5">
+                                <button type="button" class="btn btn-dark text-white" title="Add Sub-Category" data-bs-toggle="modal" data-bs-target="#add-edit-category-modal" (click)="addModal(category.key)">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item p-2 bg-dark border-white">
+                    <button type="button" class="btn btn-dark text-white float" title="Add Category" data-bs-toggle="modal" data-bs-target="#add-edit-category-modal" (click)="addModal()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-add-edit-category [category]="category" [modalTitle]="modalTitle"></app-add-edit-category>

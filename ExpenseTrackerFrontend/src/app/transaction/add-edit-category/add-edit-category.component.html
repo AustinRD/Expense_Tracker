@@ -1,1 +1,25 @@
-<p>add-edit-category works!</p>
+<!-- Modal -->
+<div class="modal fade" id="add-edit-category-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                <button type="button" class="btn-close btn-close-white" id="add-edit-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="categoryId" [value]="category.id" *ngIf="category.id != 0">
+
+                    <label for="categoryAmount" class="form-label">Category</label>
+                    <input type="text" id="categoryAmount" name="categoryAmount" class="form-control" [(ngModel)]="category.category">
+
+                    <label for="transactionDate" class="form-label">Subcategory</label>
+                    <input type="text" id="transactionDate" name="transactionDate" class="form-control" [(ngModel)]="category.subcategory">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addCategory();" *ngIf="category.id == 0">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
