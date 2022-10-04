@@ -1,1 +1,22 @@
-<p>add-edit-type works!</p>
+<!-- Modal -->
+<div class="modal fade" id="add-edit-type-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                <button type="button" class="btn-close btn-close-white" id="add-edit-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="typeId" [value]="type.id" *ngIf="type.id != 0">
+
+                    <label for="typeAmount" class="form-label">Type</label>
+                    <input type="text" id="typeAmount" name="typeAmount" class="form-control" [(ngModel)]="type.type">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addType();" *ngIf="type.id == 0">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

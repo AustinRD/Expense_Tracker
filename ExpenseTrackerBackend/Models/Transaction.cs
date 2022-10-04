@@ -1,9 +1,4 @@
-﻿/*
-    TODO: Add support for automated recurring subscriptions.
-    TODO: Add support for storage of receipt photo.
-*/
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ExpenseTrackerBackend.Models
 {

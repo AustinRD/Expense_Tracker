@@ -1,11 +1,25 @@
-<p>Transaction Types</p>
-<table>
-    <thead>
-        <th>Type</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let type of transactionTypesList$|async">
-            <td>{{type.type}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row p-4">
+        <div class="col-12">
+            <div class="accordion w-25" id="type-accordion">
+                <div class="accordion-item" *ngFor="let type of transactionTypesList$ | async; let i = index;">
+                    <h2 class="accordion-header" id="heading{{i}}">
+                        <button class="accordion-button no-bg collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                            {{type.type}}
+                            <button type="button" title="Delete" class="btn btn-outline-danger border-0 text-white ms-auto" (click)="deleteModal(type)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </button>
+                    </h2>
+                </div>
+                <div class="accordion-item p-2 bg-dark border-white">
+                    <button type="button" class="btn btn-dark text-white float" title="Add Category" data-bs-toggle="modal" data-bs-target="#add-edit-type-modal" (click)="addModal()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-add-edit-type [type]="type" [modalTitle]="modalTitle"></app-add-edit-type>

@@ -9,3 +9,5 @@ NEW FEATURE:
             --> (mastercard)
             --> etc.
     2. Add support for auth tokens, and user sign-ins
+    3. Add support for automated recurring subscriptions.
+    4. Add support for storage of receipt photo.
