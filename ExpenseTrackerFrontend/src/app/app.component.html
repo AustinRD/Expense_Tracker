@@ -3,13 +3,13 @@
     <!-- Push Sidebar -->
     <div class="row flex-nowrap">
         <div class="col-auto px-0">
-            <div id="sidebar" class="bg-dark text-white collapse collapse-horizontal">
-                <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+            <div id="sidebar" class="h-100 bg-dark text-white collapse collapse-horizontal">
+                <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start">
                     <div class="d-flex justify-content-center align-items-center pt-3">
                         Menu
                     </div>
                     <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
+                    <ul class="nav nav-pills flex-column mb-auto p-4">
                         <li>
                           <a routerLink="/dashboard" routerLinkActive="active" class="nav-link text-white">
                             Dashboard
@@ -48,7 +48,7 @@
             </div>
             <!-- Pushed Content -->
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 min-vh-100">
                     <router-outlet></router-outlet>
                 </div>
             </div>

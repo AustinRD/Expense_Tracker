@@ -6,22 +6,26 @@
                 Add Transaction
             </button>
             
-            <table class="table table-striped table-dark">
-                <thead>
-                    <th>Type</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Recipient</th>
-                    <th>Date</th>
-                    <th>Option</th>
+            <table class="table table-striped table-dark table-hover table-sm align-middle">
+                <thead class="table-dark table-striped border-white">
+                    <tr>
+                        <th>Method</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Option</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let transaction of transactionList$|async">
                         <td>{{transactionTypesMap.get(transaction.transactionTypeId)}}</td>
-                        <td>{{transactionCategoriesMap.get(transaction.transactionCategoryId)!.join(" - ")}}</td>
-                        <td>{{transaction.transactionAmount | currency}}</td>
-                        <td>{{transaction.recipient}}</td>
-                        <td>{{transaction.transactionDate | date:'shortDate'}}</td>
+                        <td>
+                            {{transactionCategoriesMap.get(transaction.transactionCategoryId)!.join(" - ")}}<br>
+                            {{transaction.transactionDescription}}
+                        </td>
+                        <td>
+                            {{transaction.transactionAmount | currency}}<br>
+                            {{transaction.transactionDate | date:'shortDate'}}
+                        </td>
                         <td>
                             <button type="button" title="Details" class="btn btn-outline-primary border-0 text-white me-1" data-bs-toggle="modal" data-bs-target="#add-edit-modal" (click)="editModal(transaction);">
                                 <i class="fa fa-magnifying-glass"></i>
