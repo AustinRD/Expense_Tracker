@@ -1,3 +1,7 @@
+INPROGRESS: 
+    1. Add Syncfusion Doughnut and Spline Charts
+
+
 BUG:
     1. Deleting Categories in the database removes all associated transactions
 
