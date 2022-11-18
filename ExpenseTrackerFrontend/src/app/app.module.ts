@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AccumulationChartModule, ChartModule } from '@syncfusion/ej2-angular-charts';
+
 import { AppComponent } from './app.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AddEditTransactionComponent } from './transaction/add-edit-transaction/add-edit-transaction.component';
@@ -14,14 +16,19 @@ import { TransactionTypeListComponent } from './transaction/transaction-type-lis
 import { TransactionCategoryListComponent } from './transaction/transaction-category-list/transaction-category-list.component';
 import { TransactionTableComponent } from './transaction/transaction-table/transaction-table.component';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DoughnutComponent } from './charts/doughnut/doughnut.component';
+import { SplineComponent } from './charts/spline/spline.component';
+
 import { TransactionDataService } from './transaction-data.service';
+import { PieSeriesService, AccumulationLegendService, AccumulationTooltipService, AccumulationAnnotationService, AccumulationDataLabelService } from '@syncfusion/ej2-angular-charts';
 
 const routes: Routes = [
   { path: 'transactionTable', component: TransactionTableComponent },
   { path: 'transactionTypes', component: TransactionTypeListComponent},
   { path: 'transactionCategories', component: TransactionCategoryListComponent},
   // TODO: Create a default "dashboard" component, remove transaction component from the below route
-  { path: 'dashboard', component: TransactionComponent } 
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
@@ -33,16 +40,29 @@ const routes: Routes = [
     AddEditCategoryComponent,
     TransactionTypeListComponent,
     TransactionCategoryListComponent,
-    TransactionTableComponent
+    TransactionTableComponent,
+    DashboardComponent,
+    DoughnutComponent,
+    SplineComponent
   ],
   imports: [
     BrowserModule,
+    AccumulationChartModule,
+    ChartModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [TransactionDataService, CurrencyPipe],
+  providers: [
+    TransactionDataService, 
+    CurrencyPipe, 
+    AccumulationLegendService, 
+    AccumulationTooltipService, 
+    AccumulationDataLabelService, 
+    AccumulationAnnotationService, 
+    PieSeriesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
