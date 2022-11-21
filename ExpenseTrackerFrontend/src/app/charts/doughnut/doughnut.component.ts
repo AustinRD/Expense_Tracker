@@ -68,9 +68,16 @@ export class DoughnutComponent implements OnInit {
     this.service.getTransactionList().subscribe(data => {
       this.transaction = data;
       var categories = [];
+      var categoryMap = new Map();
       for(let i = 0; i < data.length; i++) {
-        categories.push({ category: this.transactionCategoriesMap.get(data[i].transactionCategoryId)![0], total: data[i].transactionAmount });
+        if(categoryMap.has(this.transactionCategoriesMap.get(data[i].transactionCategoryId)![0])) {
+          categoryMap.set(this.transactionCategoriesMap.get(data[i].transactionCategoryId)![0], categoryMap.get(this.transactionCategoriesMap.get(data[i].transactionCategoryId)![0]) + data[i].transactionAmount);
+        } else {
+          categoryMap.set(this.transactionCategoriesMap.get(data[i].transactionCategoryId)![0], data[i].transactionAmount);
+        }
       }
+      categories = Array.from(categoryMap, ([category, total]) => ({category, total}))
+
       this.chartData = categories;
     });
   }
