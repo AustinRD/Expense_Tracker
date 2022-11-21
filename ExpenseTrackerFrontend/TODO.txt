@@ -15,3 +15,7 @@ NEW FEATURE:
     2. Add support for auth tokens, and user sign-ins
     3. Add support for automated recurring subscriptions.
     4. Add support for storage of receipt photo.
+    5. Update Pie Chart data filters (monthly 1st to last day and/or annual)
+    6. Add support for tracking income.
+    7. Add income to trend chart.
+    8. Add support for monthly and annual trend filters in trend chart.

@@ -1,0 +1,5 @@
+<ejs-chart [primaryXAxis]="primaryXAxis" [primaryYAxis]="primaryYAxis" [title]="title" [titleStyle]="titleStyle">
+    <e-series-collection>
+        <e-series [dataSource]="splineData" type="Spline" xName="transactionDate" yName="transactionAmount" [marker]="marker"></e-series>
+    </e-series-collection>
+</ejs-chart>

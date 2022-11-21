@@ -22,13 +22,14 @@ import { SplineComponent } from './charts/spline/spline.component';
 
 import { TransactionDataService } from './transaction-data.service';
 import { PieSeriesService, AccumulationLegendService, AccumulationTooltipService, AccumulationAnnotationService, AccumulationDataLabelService } from '@syncfusion/ej2-angular-charts';
-
+import { SplineSeriesService, DataLabelService, LegendService, TooltipService, CategoryService } from '@syncfusion/ej2-angular-charts';
 const routes: Routes = [
   { path: 'transactionTable', component: TransactionTableComponent },
   { path: 'transactionTypes', component: TransactionTypeListComponent},
   { path: 'transactionCategories', component: TransactionCategoryListComponent},
   // TODO: Create a default "dashboard" component, remove transaction component from the below route
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '**', component: DashboardComponent }
 ];
 
 @NgModule({
@@ -57,11 +58,11 @@ const routes: Routes = [
   providers: [
     TransactionDataService, 
     CurrencyPipe, 
-    AccumulationLegendService, 
-    AccumulationTooltipService, 
-    AccumulationDataLabelService, 
-    AccumulationAnnotationService, 
-    PieSeriesService
+    AccumulationLegendService, LegendService,
+    AccumulationTooltipService, TooltipService, 
+    AccumulationDataLabelService, DataLabelService, 
+    AccumulationAnnotationService, CategoryService,
+    PieSeriesService, SplineSeriesService
   ],
   bootstrap: [AppComponent]
 })
